@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Manual Imports 
 from .info import *
@@ -18,19 +19,25 @@ from .info import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 # Email settings
-EMAIL_USE_TLS = EMAIL_USE_TLS
-EMAIL_HOST = EMAIL_HOST
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_PORT = EMAIL_PORT
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = os.environ.get("EMAIL_PORT")
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m_x%gxw(_19=bk-uhbn%f2=0*kta*mu+y6zt1x+ibdzrug&la#'
+SECRET_KEY = os.environ.get("Secret_key")
+
+# print("email", EMAIL_USE_TLS, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT)
+# print("Secret",SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

@@ -1,3 +1,4 @@
 Twitter_Backend/info.py
 virtenv/*
 db.sqlite3
+.env
